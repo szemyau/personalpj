@@ -1,0 +1,71 @@
+:root {
+    --primary-color: #e8dfd9;
+    --bs-navbar-nav-link-padding-x: 0;
+    --word-color: #000000A6;
+    --word-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* TODO add spaces 35px btw nav-items */
+}
+
+body {
+    background-color: var(--primary-color) !important;
+}
+
+#my-name {
+    font-family: 'Gistesy', sans-serif;
+    color: rgb(65, 58, 58);
+    size: 2rem;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: var(--bs-navbar-nav-link-padding-x);
+    padding-left: var(--bs-navbar-nav-link-padding-x);
+    /* TODO add spaces 35px btw nav-items */
+}
+
+.nav-link {
+    text-transform: uppercase;
+    color: var(--word-color);
+    font-family: var(--word-family);
+}
+
+
+.container {
+    border: 1px solid black;
+    box-sizing: border-box;
+    color: black;
+    font-family: var(--word-family);
+}
+
+h1 {
+    text-transform: uppercase;
+}
+
+
+.firstPagePhoto {
+    position: relative;
+    margin-top: 2rem;
+}
+
+.container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: auto;
+    max-width: 100%;
+    /* TODO how can i put the image within the border */
+}
+
+/* ABOUT ME  */
+
+
+
+
+/* PHOTOS */
+
+
+/* GAME OF LIFE */
+
+
