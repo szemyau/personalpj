@@ -12,6 +12,7 @@ body {
 
 #menu-bar{
     padding: 1rem !important;
+    margin-bottom: 2rem;
 }
 
 #my-logo {
@@ -30,4 +31,44 @@ body {
 
 .nav-item{
     margin-right: 3.5rem !important;
+}
+
+/* start */
+.photoContainer{
+    margin-top: 6rem;
+    gap: 2rem;
+    padding-left: 3.5rem;
+    width: 100%;
+    height:80vh;
+    display: flex;
+}
+
+.photo{
+width: 15rem;
+height: auto;
+
+
+}
+
+.photo img{
+    border: 0.5rem solid white;
+    border-radius: 2rem;
+}
+
+.photoOneContainer{
+    position: relative;
+}
+
+.one{
+    position: relative;
+    top:8rem;
+}
+
+.photoTwoContainer{
+    position: relative;
+}
+
+.two{
+    position: relative;
+    top:3rem;
 }
