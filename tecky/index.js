@@ -5,12 +5,22 @@ let columns; /* To be determined by window width */
 let rows; /* To be determined by window height */
 let currentBoard;
 let nextBoard;
+let slider;
+let song;
+
 
 function setup() {
+    createCanvas(100, 100);
+    background(0);
+}
 
-    // const slider = createSlider(1,40,24);
-    // slider.position(300,10);
-    // slider.style('width', '80px');
+// music
+function preload() {
+    soundFormats('mp3', 'ogg');
+    song = loadSound('FlyMeToTheMoon-Lyrics.mp3');
+}
+
+function setup() {
 
     /* Set the canvas to be under the element #canvas*/
     const canvas = createCanvas(windowWidth, windowHeight - 100);
@@ -29,43 +39,66 @@ function setup() {
     }
     // Now both currentBoard and nextBoard are array of array of undefined values.
     init(); // Set the initial values of the currentBoard and nextBoard
+
+    // frame rate
+    const slider = createSlider(1, 40, 24);
+    slider.position(100, windowHeight - 80);
+    // slider.style('width', '80px');
+
+    // music
+    button = createButton("play");
+    button.mousePressed(canvasPressed);
+
 }
 
+// music
+
+function canvasPressed() {
+    if (song.isPlaying()) {
+        // .isPlaying() returns a boolean
+        song.stop();
+        button.html("play");
+    } else {
+        song.play();
+        button.html("stop");
+    }
+}
 
 /**
  * Initialize/reset the board state
  */
 function init() {
     for (let i = 0; i < columns; i++) {
-      for (let j = 0; j < rows; j++) {
-        currentBoard[i][j] = 0;
-        nextBoard[i][j] = 0;
-      }
+        for (let j = 0; j < rows; j++) {
+            currentBoard[i][j] = 0;
+            nextBoard[i][j] = 0;
+        }
     }
-  }
+}
 
 // // let someVariables = <condictions> : <when_true> : <when_false>;
 // currentBoard[i][j] = random() > 0.8 ? 1 : 0; // one line if
 // nextBoard[i][j] = 0;
 
 function draw() {
+
     // let frSpeed = slider.value();
     // frameRate(frSpeed);
 
     background(255);
     generate();
     for (let i = 0; i < columns; i++) {
-      for (let j = 0; j < rows; j++) {
-        if (currentBoard[i][j] == 1) {
-          fill(boxColor);
-        } else {
-          fill(255);
+        for (let j = 0; j < rows; j++) {
+            if (currentBoard[i][j] == 1) {
+                fill(boxColor);
+            } else {
+                fill(255);
+            }
+            stroke(strokeColor);
+            rect(i * unitLength, j * unitLength, unitLength, unitLength);
         }
-        stroke(strokeColor);
-        rect(i * unitLength, j * unitLength, unitLength, unitLength);
-      }
     }
-  }
+}
 
 // background(255);
 // generate();
@@ -73,51 +106,51 @@ function draw() {
 function generate() {
     //Loop over every single box on the board
     for (let x = 0; x < columns; x++) {
-      for (let y = 0; y < rows; y++) {
-        // Count all living members in the Moore neighborhood(8 boxes surrounding)
-        let neighbors = 0;
-        for (let i of [-1, 0, 1]) {
-          for (let j of [-1, 0, 1]) {
-            if (i == 0 && j == 0) {
-              // the cell itself is not its own neighbor
-              continue;
+        for (let y = 0; y < rows; y++) {
+            // Count all living members in the Moore neighborhood(8 boxes surrounding)
+            let neighbors = 0;
+            for (let i of [-1, 0, 1]) {
+                for (let j of [-1, 0, 1]) {
+                    if (i == 0 && j == 0) {
+                        // the cell itself is not its own neighbor
+                        continue;
+                    }
+                    // The modulo operator is crucial for wrapping on the edge
+                    neighbors +=
+                        currentBoard[(x + i + columns) % columns][(y + j + rows) % rows];
+                }
             }
-            // The modulo operator is crucial for wrapping on the edge
-            neighbors +=
-              currentBoard[(x + i + columns) % columns][(y + j + rows) % rows];
-          }
+
+            // Rules of Life
+            if (currentBoard[x][y] == 1 && neighbors < 2) {
+                // Die of Loneliness
+                nextBoard[x][y] = 0;
+            } else if (currentBoard[x][y] == 1 && neighbors > 3) {
+                // Die of Overpopulation
+                nextBoard[x][y] = 0;
+            } else if (currentBoard[x][y] == 0 && neighbors == 3) {
+                // New life due to Reproduction
+                nextBoard[x][y] = 1;
+            } else {
+                // Stasis
+                nextBoard[x][y] = currentBoard[x][y];
+            }
         }
-  
-        // Rules of Life
-        if (currentBoard[x][y] == 1 && neighbors < 2) {
-          // Die of Loneliness
-          nextBoard[x][y] = 0;
-        } else if (currentBoard[x][y] == 1 && neighbors > 3) {
-          // Die of Overpopulation
-          nextBoard[x][y] = 0;
-        } else if (currentBoard[x][y] == 0 && neighbors == 3) {
-          // New life due to Reproduction
-          nextBoard[x][y] = 1;
-        } else {
-          // Stasis
-          nextBoard[x][y] = currentBoard[x][y];
-        }
-      }
     }
-  
+
     // Swap the nextBoard to be the current Board
     [currentBoard, nextBoard] = [nextBoard, currentBoard];
-  }
+}
 
-  /**
- * When mouse is dragged
- */
+/**
+* When mouse is dragged
+*/
 function mouseDragged() {
     /**
      * If the mouse coordinate is outside the board
      */
     if (mouseX > unitLength * columns || mouseY > unitLength * rows) {
-      return;
+        return;
     }
     const x = Math.floor(mouseX / unitLength);
     const y = Math.floor(mouseY / unitLength);
@@ -125,23 +158,24 @@ function mouseDragged() {
     fill(boxColor);
     stroke(strokeColor);
     rect(x * unitLength, y * unitLength, unitLength, unitLength);
-  }
-  
-  /**
-   * When mouse is pressed
-   */
-  function mousePressed() {
+}
+
+/**
+ * When mouse is pressed
+ */
+function mousePressed() {
     noLoop();
     mouseDragged();
-  }
-  
-  /**
-   * When mouse is released
-   */
-  function mouseReleased() {
-    loop();
-  }
+}
 
-  document.querySelector("#reset-game").addEventListener("click", function () {
+/**
+ * When mouse is released
+ */
+function mouseReleased() {
+    loop();
+}
+
+document.querySelector("#reset-game").addEventListener("click", function () {
     init();
-  });
+});
+

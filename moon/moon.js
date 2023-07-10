@@ -2,7 +2,7 @@
 // //     createCanvas(windowWidth, windowHeight);
 // //     background(139,58,30);
 // //   }
-  
+
 // //   function draw() {
 // //     rect(mouseX, mouseY, 80);
 // //   }
@@ -31,8 +31,9 @@
 
 // let img;
 
-// function preload() {
-//   img = loadImage('https://cdn.pixabay.com/photo/2019/06/16/01/45/moon-4276774_1280.jpg');
+// function preload() { song = loadSound("FlyMeToTheMoon-Lyrics.mp3", loaded);
+
+//   // img = loadImage('https://cdn.pixabay.com/photo/2019/06/16/01/45/moon-4276774_1280.jpg');
 // }
 
 // function draw() {
@@ -47,29 +48,28 @@
 //     );
 //   }
 
-let song;
+// let song;
 
-function setup() {
-  createCanvas(200, 200);
-  background(51);
-  song = loadSound("file:///Users/szeszeyau/Desktop/project/%20FlyMeToTheMoon%20Lyrics.mp3", loaded);
-  button = createButton("play");
-  button.mousePressed(togglePlaying);
-}
+// function setup() {
+//   createCanvas(200, 200);
+//   background(51);
+//   button = createButton("play"); 
+//   button.mousePressed(togglePlaying);
+// }
 
-function loaded() {
-  console.log("loaded");
-}
+// function loaded() {
+//   console.log("loaded");
+// }
 
-function togglePlaying () {
-  if (!song.isPlaying ()) {
-    song.play();
-    song.setVolume(0.3)
-    button.html("pause")
-  } else {
-    song.pause();
-    button.html("play");
-  }}
+// function togglePlaying () {
+//   if (!song.isPlaying ()) {
+//     song.play();
+//     song.setVolume(0.3)
+//     button.html("pause")
+//   } else {
+//     song.pause();
+//     button.html("play");
+//   }}
 
 
 // }-
@@ -88,16 +88,138 @@ function togglePlaying () {
 //   // ele.autoplay(true);
 // }
 
-let button;
+// let button;
+// function setup() {
+//   createCanvas(100, 100);
+//   background(0);
+//   button = createButton('click me');
+//   button.position(0, 0);
+//   button.mousePressed(changeBG);
+// }
+
+// function changeBG() {
+//   let val = random(256);
+//   background(val);
+// }
+// new
+
+// let song;
+// function preload() {
+//   soundFormats('mp3', 'ogg');
+//   song = loadSound('FlyMeToTheMoon-Lyrics.mp3');
+// }
+
+// function setup() {
+//   let cnv = createCanvas(100, 100);
+//   cnv.mousePressed(canvasPressed);
+//   background(220);
+//   text('tap here to play', 10, 20);
+//   createCanvas(10, 10);
+//   background(255, 0, 0);
+// }
+
+// function canvasPressed() {
+//   // playing a sound file on a user gesture
+//   // is equivalent to `userStartAudio()`
+//   song.play();
+// }
+
+// let song;
+// function preload() {
+//   soundFormats('mp3', 'ogg');
+//   song = loadSound('FlyMeToTheMoon-Lyrics.mp3');
+// }
+
+// function setup() {
+//   button = createButton("play");
+//   button.mousePressed(canvasPressed);
+// }
+
+// function canvasPressed() {
+//   if (song.isPlaying()) {
+//     // .isPlaying() returns a boolean
+//     song.stop();
+//     button.html("play");
+//   } else {
+//     song.play();
+//     button.html("stop");
+//   }
+// }
+
+
+// function canvasPressed() {
+//   if (song.isPlaying()) {
+//     // .isPlaying() returns a boolean
+//     song.stop();
+//     button.html("play");
+//   } else {
+//     song.play();
+//     button.html("stop");
+//   }
+// }
+
+// function setup() {
+//   createCanvas(200, 200);
+//   background(51);
+//   button = createButton("play"); 
+//   button.mousePressed(togglePlaying);
+// }
+
+// function loaded() {
+//   console.log("loaded");
+// }
+
+// function togglePlaying () {
+//   if (!song.isPlaying ()) {
+//     song.play();
+//     song.setVolume(0.3)
+//     button.html("pause")
+//   } else {
+//     song.pause();
+//     button.html("play");
+//   }}
+
+let img;
+
+function preload() {
+  img = loadImage('blueSky.jpg');
+}
 function setup() {
-  createCanvas(100, 100);
-  background(0);
-  button = createButton('click me');
-  button.position(0, 0);
-  button.mousePressed(changeBG);
+  image(img, 500, 600);
 }
 
-function changeBG() {
-  let val = random(256);
-  background(val);
+function setup() {
+  // here we use a callback to display the image after loading
+  loadImage('blueSky', img => {
+    image(img, 500, 600);
+  });
 }
+
+fun
+
+// let button;
+// let buttonOne;
+
+// function setup() {
+//   createCanvas(100, 100);
+//   background(0);
+
+//   button = createButton('bye me');
+//   button.position(300, 100);
+//   button.mousePressed(changeRB);
+
+//   buttonOne = createButton('click me');
+//   buttonOne.position(600, 0);
+//   buttonOne.mousePressed(changeBG);
+// }
+
+// function changeRB() {
+//   let val = random(40);
+//   background(val);
+
+// }
+
+// function changeBG() {
+//   let value = random(255);
+//   background(value);
+// }
