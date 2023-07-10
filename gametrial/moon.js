@@ -195,7 +195,6 @@ function setup() {
   });
 }
 
-fun
 
 // let button;
 // let buttonOne;

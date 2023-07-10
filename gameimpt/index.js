@@ -9,11 +9,6 @@ let slider;
 let song;
 
 
-function setup() {
-    createCanvas(100, 100);
-    background(0);
-}
-
 // music
 function preload() {
     soundFormats('mp3', 'ogg');
@@ -26,6 +21,7 @@ function setup() {
     const canvas = createCanvas(windowWidth, windowHeight - 100);
     canvas.parent(document.querySelector("#canvas"));
 
+    //reminder
     /*Calculate the number of columns and rows */
     columns = floor(width / unitLength);
     rows = floor(height / unitLength);
@@ -64,6 +60,7 @@ function canvasPressed() {
     }
 }
 
+// Reminder
 /**
  * Initialize/reset the board state
  */
@@ -76,15 +73,16 @@ function init() {
     }
 }
 
-// // let someVariables = <condictions> : <when_true> : <when_false>;
-// currentBoard[i][j] = random() > 0.8 ? 1 : 0; // one line if
-// nextBoard[i][j] = 0;
+//reminder
+// let someVariables = <condictions> : <when_true> : <when_false>;
+currentBoard[i][j] = random() > 0.8 ? 1 : 0; // one line if
+nextBoard[i][j] = 0;
 
 function draw() {
-
-    // let frSpeed = slider.value();
-    // frameRate(frSpeed);
-
+    background(0);
+    translate(width/2, height/2);
+    
+    //reminder
     background(255);
     generate();
     for (let i = 0; i < columns; i++) {
@@ -142,6 +140,7 @@ function generate() {
     [currentBoard, nextBoard] = [nextBoard, currentBoard];
 }
 
+//reminder
 /**
 * When mouse is dragged
 */
