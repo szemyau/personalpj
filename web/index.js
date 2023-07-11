@@ -1,4 +1,4 @@
-const unitLength = 20;
+const unitLength = 70;
 const boxColor = 150;
 const strokeColor = 50;
 let columns; /* To be determined by window width */
@@ -10,20 +10,6 @@ let imgHeart;
 let slider;
 // let bgColor =(255, 210, 169);
 let bgImage;// TODO 3 change background image, image will disappear once clicked
-
-
-
-// //TODO 2 image - failed to upload image in the box
-// function preload() {
-//     // bgImage = loadImage("game.jpg");
-
-//     imgCorgi = loadImage('corgi.jpg');
-//     imgHeart = loadImage('heart.png');
-// }
-
-// imgCorgi = image(imgCorgi, 50, 0, 20, 20);
-// imgHeart = image(imgHeart, 90, 0, 20, 20);
-
 
 // music
 function preload() {
@@ -53,7 +39,7 @@ function setup() {
 
     // frame rate
     slider = createSlider(1, 40, 24);
-    slider.position(400, 30);
+    slider.position(windowWidth - 500, 70);
     // slider.style('width', '80px');
 
     // music
@@ -83,8 +69,6 @@ document.querySelector("#random").addEventListener("click", function () {
 })
 
 
-
-
 function init() {
     for (let i = 0; i < columns; i++) {
         for (let j = 0; j < rows; j++) {
@@ -93,11 +77,6 @@ function init() {
         }
     }
 }
-
-// // let someVariables = <condictions> : <when_true> : <when_false>;
-// currentBoard[i][j] = random() > 0.8 ? 1 : 0; // one line if
-// nextBoard[i][j] = 0;
-
 // music
 
 function canvasPressed() {
