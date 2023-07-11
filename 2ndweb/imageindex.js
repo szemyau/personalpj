@@ -7,22 +7,13 @@ let currentBoard;
 let nextBoard;
 let imgCorgi;
 let imgHeart;
-let slider;
-// let bgColor =(255, 210, 169);
-let bgImage;// TODO 3 change background image, image will disappear once clicked
+let count; //TODO
 
 
-
-// //TODO 2 image - failed to upload image in the box
-// function preload() {
-//     // bgImage = loadImage("game.jpg");
-
-//     imgCorgi = loadImage('corgi.jpg');
-//     imgHeart = loadImage('heart.png');
-// }
-
-// imgCorgi = image(imgCorgi, 50, 0, 20, 20);
-// imgHeart = image(imgHeart, 90, 0, 20, 20);
+function preload() {
+    imgCorgi = loadImage('corgi.jpg');
+    imgHeart = loadImage('heart.png');
+}
 
 
 // music
@@ -35,8 +26,8 @@ function setup() {
 
     /* Set the canvas to be under the element #canvas*/
     const canvas = createCanvas(windowWidth, windowHeight - 100);
-    // canvas.parent(document.querySelector("#canvas"));
-    // background(bgImage);
+    canvas.parent(document.querySelector("#canvas"));
+
     /*Calculate the number of columns and rows */
     columns = floor(width / unitLength);
     rows = floor(height / unitLength);
@@ -52,21 +43,15 @@ function setup() {
     init(); // Set the initial values of the currentBoard and nextBoard
 
     // frame rate
-    slider = createSlider(1, 40, 24);
-    slider.position(300, 30);
+    const slider = createSlider(1, 40, 24);
+    slider.position(100, windowHeight - 50);
     // slider.style('width', '80px');
 
     // music
-    button = createButton("Play Music 🎤");
+    button = createButton("play");
     button.mousePressed(canvasPressed);
 
-    //image
-    imgCorgi = loadImage('corgi.jpg');
-
-    //bgImage
-    bgImage = loadImage("game.jpg");
 }
-
 
 /**
  * Initialize/reset the board state
@@ -80,9 +65,9 @@ function init() {
     }
 }
 
-// // let someVariables = <condictions> : <when_true> : <when_false>;
-// currentBoard[i][j] = random() > 0.8 ? 1 : 0; // one line if
-// nextBoard[i][j] = 0;
+// let someVariables = <condictions> : <when_true> : <when_false>;
+currentBoard[i][j] = random() > 0.8 ? 1 : 0; // one line if
+nextBoard[i][j] = 0;
 
 // music
 
@@ -90,34 +75,31 @@ function canvasPressed() {
     if (song.isPlaying()) {
         // .isPlaying() returns a boolean
         song.stop();
-        button.html("Play Music 🎤");
+        button.html("music play");
     } else {
         song.play();
-        button.html("Music Stop ▷||");
+        button.html("music stop");
     }
 }
 
 
 function draw() {
 
-    background(bgImage);
+    background(255);
     generate();
     for (let i = 0; i < columns; i++) {
         for (let j = 0; j < rows; j++) {
             if (currentBoard[i][j] == 1) {
-                stroke(strokeColor);
-                fill(255)
-                rect(i * unitLength, j * unitLength, unitLength, unitLength);
-                image(imgCorgi, i * unitLength, j * unitLength, unitLength, unitLength, 0, 0) ////TODO 2 image - failed to upload image in the box
+                fill(boxColor);
             } else {
-                stroke(strokeColor);
-                fill(255)
-                rect(i * unitLength, j * unitLength, unitLength, unitLength);
+                fill(255);
             }
+            stroke(strokeColor);
+            rect(i * unitLength, j * unitLength, unitLength, unitLength);
         }
     }
-    let frSpeed = slider.value();
-    frameRate(frSpeed);
+    imgCorgi = image(imgCorgi, windowWidth, windowHeight - 100, 20, 20);
+    imgHeart = image(imgHeart, windowWidth, windowHeight - 100, 20, 20);
 }
 
 
@@ -178,8 +160,24 @@ function mouseDragged() {
     rect(x * unitLength, y * unitLength, unitLength, unitLength);
 }
 
+
 /**
- * When mouse is pressed reminder //stop //TODO 1 failed to activate the button of stop, resume, reset-game
+ * When mouse is pressed
+ */
+function mousePressed() {
+    noLoop();
+    mouseDragged();
+}
+
+/**
+ * When mouse is released
+ */
+function mouseReleased() {
+    loop();
+}
+
+/**
+ * When mouse is pressed reminder //stop
  */
 document.querySelector("#stop").addEventListener("click", function () {
     noLoop();
