@@ -18,18 +18,12 @@ body {
     min-height: 100vh;
     background-color: var(--primary-color) !important;
     padding: 2rem;
-    /* display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    box-sizing: border-box;  */
 }
 
 #my-name {
     font-family: 'Gistesy', sans-serif;
     color: rgb(65, 58, 58);
-    size: 2rem;
+    size: 5rem;
     font-weight: bolder;
     text-transform: uppercase;
 }
@@ -48,12 +42,6 @@ body {
 }
 
 /* start */
-.card-container {
-    margin-top: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2.5rem;
-}
 
 .card {
     background: #191c29;
@@ -148,7 +136,7 @@ body {
     color: var(--word-color);
     font-family: var(--word-family);
     font-weight: bold;
-    font-size: large;
+    font-size: larger;
     text-transform: uppercase;
     margin-bottom: 2rem;
 }
@@ -158,6 +146,7 @@ body {
     color: var(--word-color);
     font-family: var(--word-family);
     margin: 1rem;
+    font-size: large;
 }
 
 .corgi-photo{
@@ -177,4 +166,10 @@ padding-left: 2rem;
 
 .youtubeCorgi{
     margin-top: 2rem;
+}
+.margin{
+    margin-left: 15rem;
+}
+.blank{
+    margin:10rem;
 }

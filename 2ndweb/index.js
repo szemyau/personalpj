@@ -53,7 +53,7 @@ function setup() {
 
     // frame rate
     slider = createSlider(1, 40, 24);
-    slider.position(300, 30);
+    slider.position(400, 30);
     // slider.style('width', '80px');
 
     // music
@@ -65,12 +65,26 @@ function setup() {
 
     //bgImage
     bgImage = loadImage("game.jpg");
+
 }
 
 
 /**
  * Initialize/reset the board state
  */
+
+document.querySelector("#random").addEventListener("click", function () {
+    for (let i = 0; i < columns; i++) {
+        for (let j = 0; j < rows; j++) {
+            currentBoard[i][j] = random() > 0.8 ? 1 : 0;
+            nextBoard[i][j] = 0;
+        }
+    }
+})
+
+
+
+
 function init() {
     for (let i = 0; i < columns; i++) {
         for (let j = 0; j < rows; j++) {

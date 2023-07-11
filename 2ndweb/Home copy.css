@@ -35,79 +35,59 @@ body {
 
 /* start */
 .photoContainer{
-    margin-top: 7rem;
+    margin-top: 6rem;
+    gap: 2rem;
     padding-left: 3.5rem;
     width: 100%;
     height:80vh;
     display: flex;
-    justify-content: center;
-    align-content: center;
 }
 
-.photo{  
+.photo{
 width: 15rem;
 height: auto;
-margin-right: 50rem;
+
+
 }
 
 .photo img{
     border: 0.5rem solid white;
     border-radius: 2rem;
-    width: 55rem;
 }
 
 .photoOneContainer{
     position: relative;
 }
+.photoOneContainer:hover{
+
+}
 
 .one{
     position: relative;
-    top:20rem;
-    width: 15rem;
+    top:8rem;
 }
 
 .photoTwoContainer{
     position: relative;
 }
 
-.two{
-    position: relative;
-    top:7rem;
-}
-
-/* try
-.card-img-top {
-    position: relative;
-    width: 100%;
-  }
-  
-  .overlay {
-    position: fixed;
-    top: 0; 
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0.5;
-    transition: .5s ease;
-    background-color: rgb(86, 84, 84);
-  }
-  
-  .container:hover .overlay {
-    opacity: 0.3;
-  }
-  
-  .text {
-    color: black;
+/* .text {
+    color: white;
     font-size: 20px;
     position: absolute;
-    top: 10%;
-    left: 100%;
+    top: 50%;
+    left: 50%;
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     text-align: center;
-  } */
+  }
 
+.photoOneContainer:hover .overlay{
+    opacity: 0.5;
+} */
 
+.two{
+    position: relative;
+    top:3rem;
+}
