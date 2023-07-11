@@ -4,6 +4,9 @@
     --logo-family: 'Gistesy', sans-serif;
     --word-color: #000000A6;
     --word-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --bs-body-font-size: 1.5vw; 
+    --logo-size:1.2vw;
+    /* TODO 1. font size  2. logo size */ 
 }
 
 body {

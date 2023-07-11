@@ -10,30 +10,32 @@
     --primary-color: #e8dfd9;
     --bs-navbar-nav-link-padding-x: 0;
     --word-color: #000000A6;
-    --word-family: Verdana, Geneva, Tahoma, sans-serif;
+    --word-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --bs-nav-link-font-size:1.5vw;
+    --logo-family: 'Gistesy', sans-serif;
+    --logo-size:1.2vw;
+    /* TODO 1. font size */
 }
 
 
 body {
-    min-height: 100vh;
     background-color: var(--primary-color) !important;
-    padding: 2rem;
 }
 
-#my-name {
-    font-family: 'Gistesy', sans-serif;
+#menu-bar{
+    padding: 1rem !important;
+    margin-bottom: 2rem;
+}
+
+#my-logo {
+    font-size: var(--logo-size);
     color: rgb(65, 58, 58);
-    size: 5rem;
     font-weight: bolder;
     text-transform: uppercase;
+    font-family: var(--logo-family);
+    --bs-body-bg: red;
 }
 
-
-.navbar-expand-lg .navbar-nav .nav-link {
-    padding-right: var(--bs-navbar-nav-link-padding-x);
-    padding-left: var(--bs-navbar-nav-link-padding-x);
-    /* TODO add spaces 35px btw nav-items */
-}
 
 .nav-link {
     text-transform: uppercase;
@@ -41,23 +43,29 @@ body {
     font-family: var(--word-family);
 }
 
+.nav-item{
+    margin-right: 3.5rem !important;
+}
+
 /* start */
+/* --bs-card-bg: var(--bs-body-bg);
+var(--bs-body-bg)
+--bs-body-bg: #fff; */
 
 .card {
-    background: #191c29;
+    --bs-body-bg: none;
+    --bs-card-height:10px;
     width: var(--card-width);
-    height: var(--card-height);
+    height: var(--bs-card-height);
     position: relative;
     border-radius: 6px;
-    /* justify-content: center;
-    align-items: center;
-    text-align: center; */
     display: flex;
     font-size: 1.5em;
     color: rgba(88, 250, 107, 0);
     cursor: pointer;
     font-family: cursive;
     padding: 1.5rem;
+    --bs-card-bg: var(--bs-body-bg);
 }
 
 .card:hover {
@@ -123,43 +131,55 @@ body {
 .photoCaption {
     color: var(--word-color);
     text-decoration: none;
-    font-family:var(--word-family);
+    font-family:fantasy;
     text-transform: uppercase;
-    font-size: 16px;
+    font-size: 2vw;
+    font-weight: bold;
+    letter-spacing: 0.2vw;
     margin: 0;
     gap:6px;
-    padding-left: 2rem;
-    padding-top: 3px;
+    padding-left: 2vw;
+    padding-top: 3vh;
 }
 
 .bigword {
     color: var(--word-color);
     font-family: var(--word-family);
     font-weight: bold;
-    font-size: larger;
+    font-size: 5vw;
     text-transform: uppercase;
-    margin-bottom: 2rem;
+    margin-top: 2vh;
+}
+
+.smallWordContainer{
+    position: relative;
+    top:12vh;
 }
 
 .smallword{
     text-transform: capitalize;
     color: var(--word-color);
     font-family: var(--word-family);
-    margin: 1rem;
-    font-size: large;
+    font-size: 1.5vw;
+    margin-top: 2vh;
 }
 
 .corgi-photo{
-    transform: rotate(0.95turn);
+    transform: rotate(0.92turn);
     padding: 2rem;
+    position: relative;
+    top:10vh;
+    right: 5vw;
+    width: 20vw;
     }
 
 img.corgi-photo{
 padding-left: 2rem;
 }
 .card-wordings img{
+    position: absolute;
     height: auto;
-    width: 10rem;
+    width: 22vw;
     box-sizing: border-box;
     border-radius: 100%;
 }
