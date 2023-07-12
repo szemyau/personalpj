@@ -39,7 +39,7 @@ function setup() {
 
     // frame rate
     slider = createSlider(1, 40, 24);
-    slider.position(windowWidth - 500, 70);
+    slider.position(windowWidth - 500, 100);
     // slider.style('width', '80px');
 
     // music
